@@ -2,7 +2,7 @@
 Originally developed by Hendyel Pacheco, PhD at UW-Madison.
 
 This pipeline uses Bash and R scripts to perform cross-validation for phenotype predictions.
-The process works like an **American Postman** delivering letters to other postmen. Here's the analogy:
+The process works like an **American Postman** delivering letters. Here's the analogy:
 
 ## 1. 📮 The Postman: 
 The postman is the Bash script `1_run.R.jobs.paral.sh`.
