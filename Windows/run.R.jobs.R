@@ -8,11 +8,23 @@ registerDoParallel(cl)
 
 # List of seeds
 seeds <- c(123, 456, 10, 15, 8)
+folds <- seq(1:10)
+
+# Loop over seeds (sequential)
+for (s in seeds) {
+  cat("Running Seed:", s, "\n")
+  
+  # Folds 1 to 10 in parallel
+  foreach(f = folds, .packages = c(), .export = c()) %dopar% {
+    system(paste("Rscript Rcode.Pred.R", s, f))
+  }
+}
+
 
 # Run in parallel
-foreach(s = seeds) %dopar% {
-  system(paste("Rscript Rcode.Pred.R", s))  # Runs separate R processes
-}
+#foreach(s = seeds) %dopar% {
+#  system(paste("Rscript Rcode.Pred.R", s))  # Runs separate R processes
+#}
 
 # Stop the cluster
 stopCluster(cl)
