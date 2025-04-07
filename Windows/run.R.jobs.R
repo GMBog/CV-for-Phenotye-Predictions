@@ -20,11 +20,5 @@ for (s in seeds) {
   }
 }
 
-
-# Run in parallel
-#foreach(s = seeds) %dopar% {
-#  system(paste("Rscript Rcode.Pred.R", s))  # Runs separate R processes
-#}
-
 # Stop the cluster
 stopCluster(cl)
