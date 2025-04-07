@@ -10,14 +10,14 @@ registerDoParallel(cl)
 seeds <- c(123, 456, 10, 15, 8)
 folds <- seq(1:10)
 
-# Loop over seeds (sequential)
-for (s in seeds) {
-  cat("Running Seed:", s, "\n")
-  
-  # Folds 1 to 10 in parallel
-  foreach(f = folds, .packages = c(), .export = c()) %dopar% {
-    system(paste("Rscript Rcode.Pred.R", s, f))
-  }
+# Loop over all combinations of seeds and folds
+jobs <- expand.grid(seeds, folds)
+
+# Run jobs in parallel
+foreach(i = 1:nrow(jobs), .packages = c()) %dopar% {
+  s <- jobs$seeds[i]
+  f <- jobs$folds[i]
+  system(paste("Rscript Rcode.Pred.R", s, f))
 }
 
 # Stop the cluster
