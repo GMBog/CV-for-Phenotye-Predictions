@@ -3,11 +3,11 @@ library(doParallel)
 
 # Define the number of cores (use detectCores() - 1 to leave one core free)
 num_cores <- parallel::detectCores() - 1
-cl <- makeCluster(num_cores*0.8)
+cl <- makeCluster(round(num_cores*0.8, 0))
 registerDoParallel(cl)
 
 # List of seeds
-seeds <- c(123, 456, 10, 15, 8)
+seeds <- c(123, 456, 10, 15, 8) #Here are just random numbers you can change
 folds <- seq(1:10)
 
 # Loop over all combinations of seeds and folds
