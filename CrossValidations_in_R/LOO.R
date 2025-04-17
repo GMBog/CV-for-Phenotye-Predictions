@@ -16,7 +16,7 @@ for (i in 1:length(data$ID)) {
     list(X = S, model = "BayesB", saveEffects = TRUE)
   )
 
-  fm <- BGLR(y = y, ETA = ETA, nIter = 100000, burnIn = 30000, saveAt = "BB_")
+  fm <- BGLR(y = yNA, ETA = ETA, nIter = 100000, burnIn = 30000, saveAt = "BB_")
 
   result[i, 1] <- data$ID[i]
   result[i, 3] <- cor(y[tst], fm$yHat[tst])
