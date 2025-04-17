@@ -35,7 +35,7 @@ nIter <- 6000
 burnIn <- 1000
 
 fm <- BGLR(
-  y = y, ETA = list(
+  y = yNA, ETA = list(
     list(~ factor(cohort) + factor(DIM), data = data, model = "FIXED"),
     list(K = G, model = "RKHS"),
     list(X = S, model = "BayesB")
