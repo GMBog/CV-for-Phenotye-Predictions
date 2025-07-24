@@ -75,13 +75,13 @@ thin <- 5
 
 ## Model XB
 fm <- BGLR(
-  y = y, ETA = list(list(~ factor(cohort) + factor(DIM), data = data, model = "FIXED")),
+  y = yNA, ETA = list(list(~ factor(cohort) + factor(DIM), data = data, model = "FIXED")),
   nIter = nIter, burnIn = burnIn, saveAt = "FIXED_"
 )
 
 ## Model G
 fm <- BGLR(
-  y = y, ETA = list(
+  y = yNA, ETA = list(
     list(~ factor(cohort) + factor(DIM), data = data, model = "FIXED"),
     list(K = G, model = "RKHS")
   ),
